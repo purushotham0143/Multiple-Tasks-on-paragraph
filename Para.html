@@ -1,0 +1,90 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(107, 109, 109);
+        }
+        button{
+            width: 60px;
+            height: 30px;
+            
+        }
+        .button{
+            position: absolute;
+            top:20px;
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            margin: auto;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        .container{
+            position: absolute;
+            top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header class="button">
+        <button id='plus'>+</button>
+        <button id='minus'>-</button>
+        <button id='addBorder'>Add border</button>
+        <button id='removeBorder'>Remove Border</button>
+        <input type="color" name="color" id="color" placeholder="Choose a color">
+        <label for="font">Entet Text-Family</label><select name="fontName" id="font" value="">
+            <option value="">Enter your font family</option>
+            <option value="fr">'Franklin</option>
+            <option value="cn">Courier</option>
+            <option value="gill">Gill</option>
+        </select>   
+        </header>
+    <div class="container">
+        <div class="content">
+            <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat asperiores unde, voluptates ea modi alias ad et consectetur dolorum nihil, explicabo sapiente aliquam odio iure saepe at excepturi minus praesentium est animi dicta! Dolore iste itaque, eum molestias harum, ipsa soluta repudiandae perspiciatis tenetur pariatur cumque eos sapiente praesentium debitis?
+        </p>
+        </div>
+       
+    </div>
+</body>
+<script>
+    let fontSize = 20;
+     document.querySelector('#plus').addEventListener('click',()=>{
+            fontSize+=5;
+            document.querySelector('.content p').style = `font-size:${fontSize}px;`;
+            console.log(fontSize)
+     })
+     document.querySelector('#minus').addEventListener('click',()=>{
+            fontSize-=5;
+            document.querySelector('.content p').style = `font-size:${fontSize}px;`;
+            console.log(fontSize)
+     })
+     document.querySelector('#addBorder').addEventListener('click',()=>{
+        document.querySelector('.content p').style = `border:2px solid red;`
+     })
+     document.querySelector('#removeBorder').addEventListener('click',()=>{
+        document.querySelector('.content p').style = `border:none;`
+     })
+     document.querySelector('#font').addEventListener('change',(e)=>{
+          let var1 = e.target.value
+        if(var1 == 'fr')
+        {
+            document.querySelector('.content p').style.fontFamily = 'Franklin Gothic Medium', 'Arial Narrow';
+        }
+        else if(var1 == 'cn'){
+            document.querySelector('.content p').style.fontFamily = 'Courier New';
+        }
+        else if(var1 == 'gill'){
+            document.querySelector('.content p').style.fontFamily ="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif";
+        }
+     })
+     document.querySelector('#color').addEventListener('input',(e)=>{
+        // console.log(e.target.value)
+        document.querySelector('.content p').style.color = e.target.value.toString();
+     })
+</script>
+</html>
